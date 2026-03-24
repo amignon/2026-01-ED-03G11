@@ -5,9 +5,12 @@ public class TestaFila {
             Comparator.comparingInt(Paciente::getGravidade)
         );
 
-        fila.enqueue(new Paciente("Carlos", 3));
-        fila.enqueue(new Paciente("Ana", 1));
-        fila.enqueue(new Paciente("Bruno", 2));
+        fila.enqueue(new Paciente("C", 2));
+        fila.enqueue(new Paciente("A", 3));
+        fila.enqueue(new Paciente("D", 1));
+        fila.enqueue(new Paciente("B", 3));
+
+        fila.enqueue(new Paciente("E", 2));
 
         while (!fila.isEmpty()) {
             System.out.println(fila.dequeue());

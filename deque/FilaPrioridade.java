@@ -10,7 +10,21 @@ public class FilaPrioridade<T> {
     }
 
     public void enqueue(T elemento) throws Exception {
-        // Adicione seu código aqui...
+        if (fila.isEmpty()) {
+            fila.enqueueLeft(elemento);
+            return;
+        }
+        int tamanho = fila.size();
+        int movidos = 0;
+        while(movidos < tamanho 
+            && comparator.compare(elemento, fila.getLeft()) <= 0) {
+            fila.enqueueRight(fila.dequeueLeft());
+            movidos++;
+        }
+        fila.enqueueRight(elemento);
+        for (int i = 0; i < tamanho - movidos; i++) {
+            fila.enqueueRight(fila.dequeueLeft());
+        }
     }
 
     public T dequeue() throws Exception {
